@@ -1,14 +1,18 @@
-%
-% From jarticle.sty 16-Mar-88
-% -------------------------------------------------------------------------
+\ProvidesPackage{resume}
 
-% No page number
-\pagestyle{empty}
+% 基本パッケージ
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
 
-% Page layout
-%
-%\paperwidth	210mm
-%\paperheight	297mm
+% 図表関連
+\usepackage{float}
+\usepackage{here}
+
+% 参考文献
+\usepackage{cite}
+
+% ページレイアウト設定
 \textwidth       160.0mm
 \textheight      237.0mm
 \oddsidemargin    0mm
@@ -18,57 +22,54 @@
 \headsep          0.0mm
 \footskip         0.0mm
 \columnsep        6.0mm
-\parindent 1zw\relax
+\parindent        1\zw
 
-% Two column
+% ページスタイル
+\pagestyle{empty}
+
+% 2段組設定
 \twocolumn
 \raggedbottom
 
-% List Environment
+% リスト環境の設定
 \def\@listi{%
-	\leftmargin = 0.7cm
-	\labelsep = 0.2cm
-	\itemsep = 0.1cm}
+    \leftmargin = 0.7cm
+    \labelsep = 0.2cm
+    \itemsep = 0.1cm}
 \let\@listI\@listi
 
-% 
+% タイトル関連の設定
 \def\maketitle{
-	\par
-	\begingroup
-	\def\thefootnote{\fnsymbol{footnote}}
-	\def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
-	\twocolumn[\@maketitle]\@thanks
-	\endgroup
-	\setcounter{footnote}{0}
-	\let\maketitle\relax
-	\let\@maketitle\relax
-	\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax
+    \par
+    \begingroup
+    \def\thefootnote{\fnsymbol{footnote}}
+    \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
+    \twocolumn[\@maketitle]\@thanks
+    \endgroup
+    \setcounter{footnote}{0}
+    \let\maketitle\relax
+    \let\@maketitle\relax
+    \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax
 }
-%
-%%%%%  Format of Page 1 %%%%%
-%
-% Title
-%
+
+% タイトルページのフォーマット
 \def\@maketitle{
   \newpage\null\vskip 1em%
   \begin{center}%
-	\let\footnote\thanks
-% Japanese title
-	{\Large \bf \@title \par}
-	\vskip 1.5em
- 	{\large \begin{tabular}[t]{c} \@author \end{tabular}\par}
-	\vskip 1.5em
-	{\unvbox\@abstractbox}
-	\vskip2em
+    \let\footnote\thanks
+    {\Large \bf \@title \par}
+    \vskip 1.5em
+    {\large \begin{tabular}[t]{c} \@author \end{tabular}\par}
+    \vskip 1.5em
+    {\unvbox\@abstractbox}
+    \vskip2em
   \end{center}
 }
 
-
+% タイトル、著者、概要の定義
 \def\title#1{\gdef\@title{#1}}
 \def\@title#{\mkt\@warning\title}
-%
-% Japanese & English authors
-%
+
 \long\def\author#1{\long\gdef\@author{#1}}
 \def\@author{\mkt@warning\author}
 
@@ -79,9 +80,7 @@
 \def\abstract{%
    \global\setbox\@abstractbox\vbox\bgroup
       \hsize\textwidth \@parboxrestore
-      {\bfseries \abstractname}  \parindent=1zw\relax}
+      {\bfseries \abstractname}  \parindent=1\zw}
 \def\endabstract{\egroup}
 
-%%%%%%%%%%%%%%%%%%%%%%%
-
-% EOF
+\endinput
