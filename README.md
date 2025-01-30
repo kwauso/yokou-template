@@ -14,3 +14,4 @@ Macでの使用を想定しています。Latexの環境はTex Live((https://tex
 ## その他
 変更があれば、随時更新していきます。
 # yokou-template
+# yokou-template
